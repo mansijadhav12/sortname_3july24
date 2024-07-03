@@ -1,0 +1,63 @@
+<hmtl>
+	<head>
+		<title>Sort My Name App </title>
+		<style>
+			*{font-size:50px; font-family:Georgia;}
+			body{background-color:lightblue;}
+			h1{background-color:black;color:white;width:70%;border-radius:40px}
+		</style>
+	</head>
+	<body>
+		<center>
+			<h1>Sort My Name App by Mansi</h1>
+			<form onsubmit="show()">
+				<input type="text" placeholder="enter your name" id="name" />
+				<br><br>
+				<input type="submit" />
+			</form>
+			<h2 id="msg"/>
+		
+			<script>
+				function show()
+				{
+					event.preventDefault();
+					let name = document.getElementById("name");
+					let msg = document.getElementById("msg");
+
+					if(name.value==="")
+					{
+						alert("Name cannot be empty");
+						msg.innerHTML="";
+						name.focus();
+						return;
+					}
+					if (name.value.trim()==="")
+					{
+						alert("Name cannot be empty spaces");
+						msg.innerHTML="";
+						name.value="";
+						name.focus();
+						return;
+					}
+					if (!name.value.match(/^[A-Za-z ]+$/))
+					{
+						alert("Name should contain only alphabets");
+						msg.innerHTML="";	
+						name.focus();
+						return;
+					}
+
+					let r1= name.value.split("");
+					r1.sort();
+					let new_name = r1.join("");
+
+					//let new_name= name.value.split("").sort().join("");
+
+					msg.innerHTML=new_name;
+				}
+			</script>
+		</center>
+
+	</body>
+
+</html>
